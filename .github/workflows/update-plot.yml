@@ -36,3 +36,8 @@ jobs:
         run: |
           cd app-code/
           python weather_data_cleanse.py ${{ env.sha_short }}
+          
+      - name: Plot Weather Data
+        run: |
+          cd app-code/
+          python weather_data_visualize.py ${{ env.sha_short }}          
