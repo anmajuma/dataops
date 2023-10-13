@@ -1,3 +1,4 @@
 lakefs-client==0.102.2
 pandas
 matplotlib
+requests
