@@ -1,0 +1,39 @@
+name: Update Weather Locations Plot
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  update_plot:
+    name: Update plot with new location weather data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: pip install -r app-code/requirements.txt
+        
+      - name: Declare some variables
+        shell: bash
+        run: |
+          echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
+        
+      - name: Extract Weather Data
+        run: |
+          cd app-code/
+          python weather_data_extract.py ${{ env.sha_short }}
+
+      - name: Cleanse Weather Data
+        run: |
+          cd app-code/
+          python weather_data_cleanse.py ${{ env.sha_short }}
