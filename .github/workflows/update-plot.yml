@@ -1,9 +1,8 @@
 name: Update Weather Locations Plot
-
 on:
   push:
     branches:
-      - master
+      - main
   #workflow_dispatch:
 
 jobs:
