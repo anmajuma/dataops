@@ -5,8 +5,8 @@ import sys
 url = "https://api.tomorrow.io/v4/timelines"
 
 # replace the location using the corresponding lat,long
-#location = "47.75,-120.74"  # washington
-location = "36.11,-115.17"  # las vegas
+location = "47.75,-120.74"  # washington
+#location = "36.11,-115.17"  # las vegas
 environment = 'dev' # Using environment as a variable FFU, see at end of this guide
 rawRepo = environment + "-raw"
 rawRepoStorageNamespace = 'https://demo343.blob.core.windows.net/dataops/' + environment + '-raw'
